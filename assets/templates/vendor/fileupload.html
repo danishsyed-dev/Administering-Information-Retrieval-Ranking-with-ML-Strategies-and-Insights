@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block contents %}
+<div class="glass-card fade-in" style="margin-top: 4rem;">
+    <h2 class="text-gradient-purple" style="text-align: center; margin-top: 0; font-size: 2rem;">Upload Document</h2>
+    <p style="text-align: center; color: var(--text-secondary); margin-bottom: 2rem;">Select and upload plain text files (UTF-8 encoded) for lexical frequency and LDA parsing.</p>
+
+    {% if msg %}
+        <div style="background-color: rgba(16, 185, 129, 0.15); border: 1px solid rgba(16, 185, 129, 0.3); color: #34d399; padding: 1rem; border-radius: 12px; margin-bottom: 2rem; text-align: center; font-weight: 600;">
+            {{ msg }}
+        </div>
+    {% endif %}
+
+    <form action="{% url 'fileupload' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        
+        <div class="form-group" style="text-align: center;">
+            <div style="border: 2px dashed var(--border-color); border-radius: 16px; padding: 3rem; background-color: rgba(11, 15, 25, 0.4); cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.borderColor='var(--accent-indigo)'" onmouseout="this.style.borderColor='var(--border-color)'">
+                <input type="file" id="file" name="file" accept=".txt" style="display: none;" onchange="document.getElementById('file-info').innerText = 'Selected file: ' + this.files[0].name;" required>
+                <div onclick="document.getElementById('file').click();">
+                    <span style="font-size: 2.5rem; display: block; margin-bottom: 1rem;">📄</span>
+                    <span id="file-info" style="color: var(--text-secondary); font-size: 0.95rem; font-weight: 600;">Click to select a .txt file</span>
+                </div>
+            </div>
+        </div>
+
+        <div style="display: flex; gap: 1.5rem; justify-content: center; margin-top: 2rem;">
+            <button type="submit" class="btn-primary-glow" style="flex-grow: 1;">Upload</button>
+            <a href="{% url 'vendor1' %}" class="btn-secondary-glow" style="flex-grow: 1;">Back Dashboard</a>
+        </div>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,51 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Information Retrieval Ranking</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+    <nav class="gtco-nav" role="navigation">
+        <div class="main-container" style="padding: 0 2rem;">
+            <div class="row">
+                <div id="gtco-logo">
+                    <a href="{% url 'index' %}">IR RANKING PORTAL</a>
+                </div>
+                <div class="menu-1">
+                    <ul>
+                        <li><a href="{% url 'index' %}">Home</a></li>
+                        <li><a href="{% url 'user' %}">User Login</a></li>
+                        <li><a href="{% url 'vendor' %}">Vendor Login</a></li>
+                        <li><a href="{% url 'admin' %}">Admin Login</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="main-container">
+        {% if messages %}
+            <ul class="django-messages">
+                {% for message in messages %}
+                    <li class="{{ message.tags }}">{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+        {% block contents %}
+        {% endblock %}
+    </div>
+
+    <footer class="custom-footer">
+        <div class="main-container" style="padding: 0 2rem;">
+            <p>&copy; 2026 Information Retrieval Ranking with ML. All Rights Reserved.</p>
+            <p>Designed with Glassmorphic Premium UI &middot; Deep Learning Topic Modeling &amp; SVM Evaluation</p>
+        </div>
+    </footer>
+
+</body>
+</html>

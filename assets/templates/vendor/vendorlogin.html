@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block contents %}
+<div class="glass-card fade-in" style="margin-top: 4rem;">
+    <h2 class="text-gradient-purple" style="text-align: center; margin-top: 0; font-size: 2rem;">Vendor Sign In</h2>
+    <p style="text-align: center; color: var(--text-secondary); margin-bottom: 2rem;">Log in to upload new documents and manage your files index.</p>
+
+    <form action="{% url 'vendorloginaction' %}" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="mail">Email Address</label>
+            <input type="email" id="mail" name="mail" placeholder="Enter your registered vendor email" required>
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="Enter your password" required>
+        </div>
+
+        <div style="text-align: right; margin-bottom: 1.5rem; font-size: 0.9rem;">
+            <a href="{% url 'vendorregistration' %}" style="color: var(--accent-indigo); text-decoration: none; font-weight: 600;">Create Vendor Account</a>
+        </div>
+
+        <div style="text-align: center; margin-top: 2rem;">
+            <button type="submit" class="btn-secondary-glow" style="width: 100%;">Sign In</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

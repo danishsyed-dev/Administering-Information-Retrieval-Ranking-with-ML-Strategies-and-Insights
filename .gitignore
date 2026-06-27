@@ -1,0 +1,22 @@
+# Ignore reverse engineering project documentation
+PROJECT_KNOWLEDGE_BASE.md
+
+# Ignore local virtual environment
+predict_env/
+
+# Ignore local SQLite database
+db.sqlite3
+
+# Ignore media files (uploaded documents)
+media/
+
+# Ignore Python compiled files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Ignore local OS metadata
+Thumbs.db
+Desktop.ini
+.DS_Store

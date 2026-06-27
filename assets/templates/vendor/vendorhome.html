@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block contents %}
+<div class="hero-section fade-in" style="padding-top: 4rem;">
+    <h1>Vendor Control Center</h1>
+    <p>Logged in as: <span class="text-gradient-purple">{{ request.session.vendorid }}</span></p>
+</div>
+
+<div class="glass-card fade-in" style="text-align: center;">
+    <h3 style="margin-top: 0; color: #fff;">Document Management</h3>
+    <p style="color: var(--text-secondary); margin-bottom: 2rem;">Upload UTF-8 text files to the ranking engine media directory. The engine maps document frequencies dynamically.</p>
+    
+    <div style="display: flex; gap: 1.5rem; justify-content: center;">
+        <a href="{% url 'fileupload' %}" class="btn-primary-glow">Upload New Document</a>
+        <a href="{% url 'logout' %}" class="btn-secondary-glow">Sign Out</a>
+    </div>
+</div>
+{% endblock %}

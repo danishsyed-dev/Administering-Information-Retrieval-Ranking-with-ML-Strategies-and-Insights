@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block contents %}
+<div class="glass-card-wide fade-in">
+    <h2 class="text-gradient-purple" style="margin-top: 0; font-size: 2rem;">Search Results</h2>
+    <p style="color: var(--text-secondary); margin-bottom: 2rem;">Found matches for query: <code style="color: #06b6d4;">"{{ query }}"</code></p>
+
+    <div style="overflow-x: auto;">
+        <table class="custom-table">
+            <thead>
+                <tr>
+                    <th>File ID</th>
+                    <th>Document Filename</th>
+                    <th>Vendor</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for x in object %}
+                <tr>
+                    <td><code>#{{ x.id }}</code></td>
+                    <td style="color: #fff; font-weight: 600;">{{ x.filename }}</td>
+                    <td>{{ x.vendorname }}</td>
+                    <td>
+                        <!-- Pass filename parameter as the filepath -->
+                        <a href="{% url 'weight' %}?filename={{ x.filepath }}" class="btn-primary-glow" style="padding: 0.4rem 1rem; font-size: 0.85rem; box-shadow: none;">Calculate Weightage</a>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="4" style="text-align: center; color: var(--text-secondary); padding: 3rem;">
+                        No matching documents found in the database.
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div style="display: flex; gap: 1.5rem; justify-content: center; margin-top: 3rem;">
+        <a href="{% url 'home' %}" class="btn-secondary-glow">Back Dashboard</a>
+        <a href="{% url 'search' %}" class="btn-primary-glow">Search Again</a>
+    </div>
+</div>
+{% endblock %}

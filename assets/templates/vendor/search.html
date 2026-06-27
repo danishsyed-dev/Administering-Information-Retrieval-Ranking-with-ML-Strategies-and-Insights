@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block contents %}
+<div class="glass-card fade-in" style="margin-top: 4rem; max-width: 800px; padding: 3rem;">
+    <h2 class="text-gradient-purple" style="text-align: center; margin-top: 0; font-size: 2rem;">Semantic Document Search</h2>
+    <p style="text-align: center; color: var(--text-secondary); margin-bottom: 2.5rem;">Lookup files stored in the index by entering matching keywords.</p>
+
+    <form action="{% url 'usersearchresult' %}" method="post">
+        {% csrf_token %}
+        <div style="display: flex; gap: 1rem; align-items: center;">
+            <input type="text" name="query" placeholder="Enter single-term or multi-term query..." style="flex-grow: 1;" required>
+            <button type="submit" class="btn-primary-glow" style="padding: 0.9rem 2.2rem;">Find Files</button>
+        </div>
+    </form>
+    
+    <div style="text-align: center; margin-top: 2.5rem;">
+        <a href="{% url 'home' %}" style="color: var(--text-secondary); text-decoration: none; font-size: 0.95rem; font-weight: 600;">Back to Dashboard</a>
+    </div>
+</div>
+{% endblock %}

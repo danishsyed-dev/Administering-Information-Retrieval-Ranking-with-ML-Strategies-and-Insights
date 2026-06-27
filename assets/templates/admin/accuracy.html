@@ -1,0 +1,72 @@
+{% extends "AdminBase.html" %}
+{% block contents %}
+<div class="glass-card-wide fade-in">
+    <h2 class="text-gradient-purple" style="margin-top: 0; font-size: 2rem;">SVM Classifier Evaluation</h2>
+    <p style="color: var(--text-secondary); margin-bottom: 2.5rem;">Linear Support Vector Machine (SVM) training results based on calculations of document weights.</p>
+
+    <!-- Metrics Cards -->
+    <div class="metric-grid">
+        <div class="metric-card">
+            <h3>Model Kernel</h3>
+            <div class="metric-value" style="font-size: 2rem; margin: 1rem 0;">Linear SVC</div>
+            <p style="margin: 0; color: var(--text-secondary); font-size: 0.85rem;">Scikit-Learn Classifier</p>
+        </div>
+        <div class="metric-card">
+            <h3>Test Split Size</h3>
+            <div class="metric-value">20%</div>
+            <p style="margin: 0; color: var(--text-secondary); font-size: 0.85rem;">Random State Split</p>
+        </div>
+        <div class="metric-card">
+            <h3>Optimized Target</h3>
+            <div class="metric-value" style="font-size: 2rem; margin: 1rem 0;">Relevance</div>
+            <p style="margin: 0; color: var(--text-secondary); font-size: 0.85rem;">Median weight threshold</p>
+        </div>
+    </div>
+
+    <!-- Confusion Matrix & Report -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 2rem; margin-top: 2rem;">
+        <div class="glass-card" style="margin: 0; max-width: 100%; padding: 2rem;">
+            <h3 style="margin-top: 0; color: #fff;">Confusion Matrix</h3>
+            <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">Showing count of True Positives, False Positives, True Negatives, and False Negatives:</p>
+            
+            <div style="background-color: rgba(11, 15, 25, 0.8); border: 1px solid var(--border-color); border-radius: 12px; padding: 2rem; text-align: center;">
+                <pre style="color: #06b6d4; font-family: monospace; font-size: 1.4rem; margin: 0; line-height: 1.5;">{{ m }}</pre>
+            </div>
+        </div>
+
+        <div class="glass-card" style="margin: 0; max-width: 100%; padding: 2rem;">
+            <h3 style="margin-top: 0; color: #fff;">Classification Report</h3>
+            <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">Detailed precision, recall, and F1 performance scores:</p>
+            
+            <div style="background-color: rgba(11, 15, 25, 0.8); border: 1px solid var(--border-color); border-radius: 12px; padding: 1.5rem;">
+                <pre style="color: #c084fc; font-family: monospace; font-size: 0.95rem; margin: 0; white-space: pre-wrap; line-height: 1.6;">{{ accurancy }}</pre>
+            </div>
+        </div>
+    </div>
+
+    <!-- Split Debug Tokens Table -->
+    <div class="glass-card-wide" style="margin-top: 3rem; padding: 2rem;">
+        <h3 style="margin-top: 0; color: #fff;">Report Split Diagnostic Tokens</h3>
+        <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">Tokens extracted from split index layout analysis:</p>
+        
+        <div style="display: flex; flex-wrap: wrap; gap: 0.8rem;">
+            {% if len0 %}<span style="background: rgba(255,255,255,0.05); padding: 0.4rem 0.8rem; border-radius: 8px; font-size: 0.85rem;"><code>[0]</code> {{ len0 }}</span>{% endif %}
+            {% if len1 %}<span style="background: rgba(255,255,255,0.05); padding: 0.4rem 0.8rem; border-radius: 8px; font-size: 0.85rem;"><code>[1]</code> {{ len1 }}</span>{% endif %}
+            {% if len2 %}<span style="background: rgba(255,255,255,0.05); padding: 0.4rem 0.8rem; border-radius: 8px; font-size: 0.85rem;"><code>[2]</code> {{ len2 }}</span>{% endif %}
+            {% if len3 %}<span style="background: rgba(255,255,255,0.05); padding: 0.4rem 0.8rem; border-radius: 8px; font-size: 0.85rem;"><code>[3]</code> {{ len3 }}</span>{% endif %}
+            {% if len4 %}<span style="background: rgba(255,255,255,0.05); padding: 0.4rem 0.8rem; border-radius: 8px; font-size: 0.85rem;"><code>[4]</code> {{ len4 }}</span>{% endif %}
+            {% if len5 %}<span style="background: rgba(255,255,255,0.05); padding: 0.4rem 0.8rem; border-radius: 8px; font-size: 0.85rem;"><code>[5]</code> {{ len5 }}</span>{% endif %}
+            {% if len6 %}<span style="background: rgba(255,255,255,0.05); padding: 0.4rem 0.8rem; border-radius: 8px; font-size: 0.85rem;"><code>[6]</code> {{ len6 }}</span>{% endif %}
+            {% if len7 %}<span style="background: rgba(255,255,255,0.05); padding: 0.4rem 0.8rem; border-radius: 8px; font-size: 0.85rem;"><code>[7]</code> {{ len7 }}</span>{% endif %}
+            {% if len8 %}<span style="background: rgba(255,255,255,0.05); padding: 0.4rem 0.8rem; border-radius: 8px; font-size: 0.85rem;"><code>[8]</code> {{ len8 }}</span>{% endif %}
+            {% if len9 %}<span style="background: rgba(255,255,255,0.05); padding: 0.4rem 0.8rem; border-radius: 8px; font-size: 0.85rem;"><code>[9]</code> {{ len9 }}</span>{% endif %}
+            {% if len10 %}<span style="background: rgba(255,255,255,0.05); padding: 0.4rem 0.8rem; border-radius: 8px; font-size: 0.85rem;"><code>[10]</code> {{ len10 }}</span>{% endif %}
+            {% if len11 %}<span style="background: rgba(255,255,255,0.05); padding: 0.4rem 0.8rem; border-radius: 8px; font-size: 0.85rem;"><code>[11]</code> {{ len11 }}</span>{% endif %}
+            {% if len12 %}<span style="background: rgba(255,255,255,0.05); padding: 0.4rem 0.8rem; border-radius: 8px; font-size: 0.85rem;"><code>[12]</code> {{ len12 }}</span>{% endif %}
+            {% if len13 %}<span style="background: rgba(255,255,255,0.05); padding: 0.4rem 0.8rem; border-radius: 8px; font-size: 0.85rem;"><code>[13]</code> {{ len13 }}</span>{% endif %}
+            {% if len14 %}<span style="background: rgba(255,255,255,0.05); padding: 0.4rem 0.8rem; border-radius: 8px; font-size: 0.85rem;"><code>[14]</code> {{ len14 }}</span>{% endif %}
+            {% if len15 %}<span style="background: rgba(255,255,255,0.05); padding: 0.4rem 0.8rem; border-radius: 8px; font-size: 0.85rem;"><code>[15]</code> {{ len15 }}</span>{% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

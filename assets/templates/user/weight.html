@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block contents %}
+<div class="glass-card fade-in" style="margin-top: 4rem; text-align: center;">
+    <h2 class="text-gradient-purple" style="margin-top: 0; font-size: 2.2rem;">Document Relevance Weight</h2>
+    <p style="color: var(--text-secondary); margin-bottom: 2rem;">The NLP cleaning pipeline and Latent Dirichlet Allocation (LDA) modeling have completed evaluation of the document.</p>
+
+    <div class="metric-card" style="max-width: 300px; margin: 0 auto 2.5rem; background: rgba(99, 102, 241, 0.08); border-color: rgba(99, 102, 241, 0.3);">
+        <h3 style="color: var(--text-secondary);">Calculated Weight</h3>
+        <div class="metric-value" style="font-size: 3.5rem; text-shadow: 0 0 20px rgba(6, 182, 212, 0.4);">
+            {{ dict|floatformat:6 }}
+        </div>
+        <p style="margin: 0; color: var(--text-secondary); font-size: 0.85rem;">Sum of Topic Distributions</p>
+    </div>
+
+    <div style="display: flex; gap: 1.5rem; justify-content: center;">
+        <a href="{% url 'home' %}" class="btn-primary-glow">Search Again</a>
+        <a href="{% url 'logout' %}" class="btn-secondary-glow">Sign Out</a>
+    </div>
+</div>
+{% endblock %}

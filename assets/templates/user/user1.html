@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block contents %}
+<div class="glass-card fade-in" style="margin-top: 4rem;">
+    <h2 class="text-gradient-purple" style="text-align: center; margin-top: 0; font-size: 2rem;">Choose New Password</h2>
+    <p style="text-align: center; color: var(--text-secondary); margin-bottom: 2rem;">Verification successful. Set a new password for account: <code>{{ msg }}</code></p>
+
+    <form action="{% url 'nwpwd' %}" method="post">
+        {% csrf_token %}
+        <input type="hidden" name="name1" value="{{ msg }}">
+        <div class="form-group">
+            <label for="p1">New Password</label>
+            <input type="password" id="p1" name="p1" placeholder="Enter new password" required>
+        </div>
+        <div style="text-align: center; margin-top: 2rem;">
+            <button type="submit" class="btn-primary-glow" style="width: 100%;">Update Password</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

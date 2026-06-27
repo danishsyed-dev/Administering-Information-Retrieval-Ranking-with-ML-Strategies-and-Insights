@@ -1,0 +1,54 @@
+{% extends "AdminBase.html" %}
+{% block contents %}
+<div class="glass-card-wide fade-in">
+    <h2 class="text-gradient-purple" style="margin-top: 0; font-size: 2rem;">Registered Users</h2>
+    <p style="color: var(--text-secondary); margin-bottom: 2rem;">Activate pending users to grant them access to the search portal.</p>
+
+    <div style="overflow-x: auto;">
+        <table class="custom-table">
+            <thead>
+                <tr>
+                    <th>Username</th>
+                    <th>Email</th>
+                    <th>Mobile</th>
+                    <th>Place</th>
+                    <th>City</th>
+                    <th>Auth Key</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for x in object %}
+                <tr>
+                    <td>{{ x.loginid }}</td>
+                    <td>{{ x.email }}</td>
+                    <td>{{ x.mobile }}</td>
+                    <td>{{ x.place }}</td>
+                    <td>{{ x.city }}</td>
+                    <td><code style="color: #c084fc;">{{ x.authkey }}</code></td>
+                    <td>
+                        {% if x.status == 'activated' %}
+                            <span style="color: #34d399; font-weight: 600; background: rgba(16, 185, 129, 0.1); padding: 0.3rem 0.6rem; border-radius: 6px;">Activated</span>
+                        {% else %}
+                            <span style="color: #fbbf24; font-weight: 600; background: rgba(251, 191, 36, 0.1); padding: 0.3rem 0.6rem; border-radius: 6px;">{{ x.status }}</span>
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if x.status != 'activated' %}
+                            <a href="{% url 'activateuser' %}?usid={{ x.id }}" class="btn-primary-glow" style="padding: 0.4rem 0.8rem; font-size: 0.85rem; box-shadow: none;">Activate</a>
+                        {% else %}
+                            <span style="color: var(--text-secondary);">N/A</span>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="8" style="text-align: center; color: var(--text-secondary); padding: 2rem;">No registered users found.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

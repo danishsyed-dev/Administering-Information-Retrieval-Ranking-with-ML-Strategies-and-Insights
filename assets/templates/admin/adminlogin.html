@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block contents %}
+<div class="glass-card fade-in" style="margin-top: 4rem;">
+    <h2 class="text-gradient-purple" style="text-align: center; margin-top: 0; font-size: 2rem;">Admin Portal</h2>
+    <p style="text-align: center; color: var(--text-secondary); margin-bottom: 2rem;">Log in using your system administrator credentials.</p>
+    
+    <form action="{% url 'adminloginaction' %}" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" placeholder="Enter admin username" required>
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="Enter admin password" required>
+        </div>
+        <div style="text-align: center; margin-top: 2rem;">
+            <button type="submit" class="btn-primary-glow" style="width: 100%;">Sign In</button>
+        </div>
+    </form>
+</div>
+{% endblock %}
