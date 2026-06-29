@@ -1,33 +1,47 @@
 {% extends "base.html" %}
 {% block contents %}
-<div class="hero-section fade-in" style="padding-top: 4rem;">
-    <h1>User Search Dashboard</h1>
-    <p>Welcome, <span class="text-gradient-purple">{{ request.session.userid }}</span>! Search for documents uploaded by vendors, and compute their relevance ranking weightages using machine learning models.</p>
+<div class="hero-section fade-in">
+    <h1>Search Dashboard</h1>
+    <p>Logged in as: <span class="text-gradient-purple" style="font-weight: 700; color: #ffffff;">{{ request.session.userid }}</span> &middot; <code>{{ request.session.email }}</code></p>
 </div>
 
-<div class="glass-card fade-in" style="max-width: 800px; padding: 3rem;">
-    <h3 style="margin-top: 0; color: #fff; text-align: center; margin-bottom: 1.5rem;">Semantic Document Retrieval</h3>
-    <form action="{% url 'usersearchresult' %}" method="post">
-        {% csrf_token %}
-        <div style="display: flex; gap: 1rem; align-items: center;">
-            <input type="text" name="query" placeholder="Enter single-term or multi-term search query..." style="flex-grow: 1;" required>
-            <button type="submit" class="btn-primary-glow" style="padding: 0.9rem 2rem;">Search Documents</button>
+<div class="outer-bezel-wide fade-in">
+    <div class="inner-core" style="padding: 3rem;">
+        <h3 style="margin-top: 0; font-size: 1.5rem; margin-bottom: 1rem;">Retrieve Documents</h3>
+        <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 2rem; line-height: 1.5;">Execute a semantic index search to locate vendor files and calculate their relevance weights.</p>
+        
+        <form action="{% url 'usersearchresult' %}" method="post">
+            {% csrf_token %}
+            <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                <input type="text" name="query" placeholder="Enter keywords (e.g. Anaconda, database, python)..." style="flex-grow: 1;" required>
+                <button type="submit" class="btn-premium">
+                    <span>Search Index</span>
+                    <span class="btn-arrow">&rarr;</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="bento-grid fade-in">
+    <div class="outer-bezel" style="margin: 0; max-width: 100%;">
+        <div class="inner-core" style="padding: 2rem;">
+            <h4 style="margin-top: 0; color: #ffffff; font-size: 1.1rem;">Search &amp; Tokenize</h4>
+            <p style="color: var(--text-secondary); font-size: 0.85rem; line-height: 1.6; margin-bottom: 0;">Keywords match document filenames or file content. Calculation applies lower-casing, digits-to-words translation, lemmatization, and stopwords filters before modeling.</p>
         </div>
-    </form>
-</div>
-
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 3rem;" class="fade-in">
-    <div class="glass-card" style="margin: 0; max-width: 100%;">
-        <h4 style="color: #fff; margin-top: 0;">How it works:</h4>
-        <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6;">1. Input search keywords into the lookup field above.</p>
-        <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6;">2. Matching documents will be displayed from the database.</p>
-        <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6;">3. Click <strong>Calculate Weightage</strong> to run the NLP parsing and LDA topic distribution computation.</p>
     </div>
     
-    <div class="glass-card" style="margin: 0; max-width: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
-        <h4 style="color: #fff; margin-top: 0;">Account Session</h4>
-        <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 1.5rem;">Currently logged in as:<br><code>{{ request.session.email }}</code></p>
-        <a href="{% url 'logout' %}" class="btn-secondary-glow" style="padding: 0.6rem 1.5rem; font-size: 0.9rem;">Sign Out</a>
+    <div class="outer-bezel" style="margin: 0; max-width: 100%; display: flex; flex-direction: column;">
+        <div class="inner-core" style="padding: 2rem; display: flex; flex-direction: column; justify-content: space-between; height: 100%; box-sizing: border-box;">
+            <div>
+                <h4 style="margin-top: 0; color: #ffffff; font-size: 1.1rem;">Manage Session</h4>
+                <p style="color: var(--text-secondary); font-size: 0.85rem; line-height: 1.6; margin-bottom: 1.5rem;">To change accounts or end this request session, click the sign out button below.</p>
+            </div>
+            <a href="{% url 'logout' %}" class="btn-premium btn-premium-sec" style="align-self: flex-start;">
+                <span>Sign Out</span>
+                <span class="btn-arrow">&rarr;</span>
+            </a>
+        </div>
     </div>
 </div>
 {% endblock %}

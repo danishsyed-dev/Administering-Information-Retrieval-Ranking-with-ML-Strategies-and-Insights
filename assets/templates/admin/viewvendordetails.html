@@ -1,54 +1,59 @@
 {% extends "AdminBase.html" %}
 {% block contents %}
-<div class="glass-card-wide fade-in">
-    <h2 class="text-gradient-purple" style="margin-top: 0; font-size: 2rem;">Registered File Vendors</h2>
-    <p style="color: var(--text-secondary); margin-bottom: 2rem;">Activate pending vendors to allow them to log in and upload files.</p>
+<div class="outer-bezel-wide fade-in">
+    <div class="inner-core">
+        <h2 style="margin-top: 0; font-size: 1.8rem;">Registered File Vendors</h2>
+        <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 2rem;">Activate pending vendors to allow them to log in and upload files.</p>
 
-    <div style="overflow-x: auto;">
-        <table class="custom-table">
-            <thead>
-                <tr>
-                    <th>Username</th>
-                    <th>Email</th>
-                    <th>Mobile</th>
-                    <th>Place</th>
-                    <th>City</th>
-                    <th>Auth Key</th>
-                    <th>Status</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for x in object %}
-                <tr>
-                    <td>{{ x.loginid }}</td>
-                    <td>{{ x.email }}</td>
-                    <td>{{ x.mobile }}</td>
-                    <td>{{ x.place }}</td>
-                    <td>{{ x.city }}</td>
-                    <td><code style="color: #c084fc;">{{ x.authkey }}</code></td>
-                    <td>
-                        {% if x.status == 'activated' %}
-                            <span style="color: #34d399; font-weight: 600; background: rgba(16, 185, 129, 0.1); padding: 0.3rem 0.6rem; border-radius: 6px;">Activated</span>
-                        {% else %}
-                            <span style="color: #fbbf24; font-weight: 600; background: rgba(251, 191, 36, 0.1); padding: 0.3rem 0.6rem; border-radius: 6px;">{{ x.status }}</span>
-                        {% endif %}
-                    </td>
-                    <td>
-                        {% if x.status != 'activated' %}
-                            <a href="{% url 'activatevendor' %}?usid={{ x.id }}" class="btn-secondary-glow" style="padding: 0.4rem 0.8rem; font-size: 0.85rem; box-shadow: none;">Activate</a>
-                        {% else %}
-                            <span style="color: var(--text-secondary);">N/A</span>
-                        {% endif %}
-                    </td>
-                </tr>
-                {% empty %}
-                <tr>
-                    <td colspan="8" style="text-align: center; color: var(--text-secondary); padding: 2rem;">No registered vendors found.</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+        <div class="table-wrapper">
+            <table class="custom-table">
+                <thead>
+                    <tr>
+                        <th>Username</th>
+                        <th>Email</th>
+                        <th>Mobile</th>
+                        <th>Place</th>
+                        <th>City</th>
+                        <th>Auth Key</th>
+                        <th>Status</th>
+                        <th style="text-align: right;">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for x in object %}
+                    <tr>
+                        <td style="color: #ffffff; font-weight: 600;">{{ x.loginid }}</td>
+                        <td>{{ x.email }}</td>
+                        <td>{{ x.mobile }}</td>
+                        <td>{{ x.place }}</td>
+                        <td>{{ x.city }}</td>
+                        <td><code style="color: var(--accent-emerald);">{{ x.authkey }}</code></td>
+                        <td>
+                            {% if x.status == 'activated' %}
+                                <span style="color: #34d399; font-weight: 600; background: rgba(16, 185, 129, 0.05); padding: 0.3rem 0.6rem; border-radius: 6px; font-size: 0.8rem; border: 1px solid rgba(16, 185, 129, 0.1);">Activated</span>
+                            {% else %}
+                                <span style="color: #fbbf24; font-weight: 600; background: rgba(251, 191, 36, 0.05); padding: 0.3rem 0.6rem; border-radius: 6px; font-size: 0.8rem; border: 1px solid rgba(251, 191, 36, 0.1);">{{ x.status }}</span>
+                            {% endif %}
+                        </td>
+                        <td style="text-align: right;">
+                            {% if x.status != 'activated' %}
+                                <a href="{% url 'activatevendor' %}?usid={{ x.id }}" class="btn-premium" style="padding: 0.4rem 0.4rem 0.4rem 1.2rem; font-size: 0.8rem; box-shadow: none;">
+                                    <span>Activate</span>
+                                    <span class="btn-arrow" style="width: 24px; height: 24px; font-size: 0.8rem;">&rarr;</span>
+                                </a>
+                            {% else %}
+                                <span style="color: var(--text-secondary); font-size: 0.85rem;">Ready</span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="8" style="text-align: center; color: var(--text-secondary); padding: 3rem;">No registered file vendors found in the database.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
 {% endblock %}

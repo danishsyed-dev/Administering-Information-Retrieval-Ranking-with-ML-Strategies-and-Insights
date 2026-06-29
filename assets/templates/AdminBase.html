@@ -4,8 +4,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Admin Dashboard - IR Ranking</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Admin Panel - IR Ranking</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}?v=3">
     <script type="text/javascript">
         window.history.forward();
         function noBack(){
@@ -15,22 +15,20 @@
 </head>
 <body onload="noBack();" onpageshow="if(event.persisted) noBack();">
 
-    <nav class="gtco-nav" role="navigation">
-        <div class="main-container" style="padding: 0 2rem;">
-            <div class="row">
-                <div id="gtco-logo">
-                    <a href="{% url 'admin1' %}">IR ADMIN DASHBOARD</a>
-                </div>
-                <div class="menu-1">
-                    <ul>
-                        <li><a href="{% url 'admin1' %}">Home</a></li>
-                        <li><a href="{% url 'userdetails' %}">UserDetails</a></li>
-                        <li><a href="{% url 'vendordetails' %}">VendorDetails</a></li>
-                        <li><a href="{% url 'filedetails' %}">FileDetails</a></li>
-                        <li><a href="{% url 'accurancy' %}">Accurancy</a></li>
-                        <li><a href="{% url 'logout' %}">Logout</a></li>
-                    </ul>
-                </div>
+    <nav class="nav-island" role="navigation">
+        <div class="row">
+            <div id="gtco-logo">
+                <a href="{% url 'admin1' %}">Admin Console</a>
+            </div>
+            <div class="menu-1">
+                <ul>
+                    <li><a href="{% url 'admin1' %}">Dashboard</a></li>
+                    <li><a href="{% url 'userdetails' %}">Users</a></li>
+                    <li><a href="{% url 'vendordetails' %}">Vendors</a></li>
+                    <li><a href="{% url 'filedetails' %}">Uploads</a></li>
+                    <li><a href="{% url 'accurancy' %}">Accuracy Check</a></li>
+                    <li><a href="{% url 'logout' %}" style="color: #f87171;">Logout</a></li>
+                </ul>
             </div>
         </div>
     </nav>
@@ -49,9 +47,7 @@
     </div>
 
     <footer class="custom-footer">
-        <div class="main-container" style="padding: 0 2rem;">
-            <p>&copy; 2026 Information Retrieval Ranking with ML. Admin Control Panel.</p>
-        </div>
+        <p>&copy; 2026 Information Retrieval Ranking with ML. Administrator Dashboard Control.</p>
     </footer>
 
 </body>

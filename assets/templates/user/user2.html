@@ -1,13 +1,18 @@
 {% extends "base.html" %}
 {% block contents %}
-<div class="glass-card fade-in" style="margin-top: 4rem; text-align: center;">
-    <h2 class="text-gradient-purple" style="margin-top: 0; font-size: 2rem;">Password Updated</h2>
-    <div style="background-color: rgba(16, 185, 129, 0.15); border: 1px solid rgba(16, 185, 129, 0.3); color: #34d399; padding: 1rem 1.5rem; border-radius: 12px; margin: 2rem 0; font-weight: 600;">
-        {{ msg }}
-    </div>
-    
-    <div style="margin-top: 2rem;">
-        <a href="{% url 'user' %}" class="btn-primary-glow" style="width: 100%; box-sizing: border-box;">Go to Login</a>
+<div class="outer-bezel fade-in" style="margin-top: 4rem;">
+    <div class="inner-core" style="text-align: center;">
+        <h2 style="margin-top: 0; font-size: 1.8rem;">Password Updated</h2>
+        <div style="background-color: rgba(16, 185, 129, 0.06); border: 1px solid rgba(16, 185, 129, 0.15); color: #34d399; padding: 1.2rem; border-radius: 14px; margin: 2rem 0; font-weight: 500; font-size: 0.95rem;">
+            {{ msg }}
+        </div>
+        
+        <div style="margin-top: 2rem; display: flex; justify-content: center;">
+            <a href="{% url 'user' %}" class="btn-premium" style="width: 100%;">
+                <span>Proceed to Sign In</span>
+                <span class="btn-arrow">&rarr;</span>
+            </a>
+        </div>
     </div>
 </div>
 {% endblock %}

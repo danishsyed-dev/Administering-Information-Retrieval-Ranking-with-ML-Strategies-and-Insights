@@ -1,28 +1,33 @@
 {% extends "base.html" %}
 {% block contents %}
-<div class="glass-card fade-in" style="margin-top: 4rem;">
-    <h2 class="text-gradient-purple" style="text-align: center; margin-top: 0; font-size: 2rem;">User Sign In</h2>
-    <p style="text-align: center; color: var(--text-secondary); margin-bottom: 2rem;">Access document ranking searches and relevance weight calculation details.</p>
+<div class="outer-bezel fade-in" style="margin-top: 3rem;">
+    <div class="inner-core">
+        <h2 style="margin-top: 0; font-size: 1.8rem; text-align: center;">User Sign In</h2>
+        <p style="color: var(--text-secondary); text-align: center; font-size: 0.9rem; margin-bottom: 2rem; line-height: 1.5;">Access document search matrices and calculate semantic relevance weightages.</p>
 
-    <form action="{% url 'userloginaction' %}" method="post">
-        {% csrf_token %}
-        <div class="form-group">
-            <label for="mail">Email Address</label>
-            <input type="email" id="mail" name="mail" placeholder="Enter your registered email" required>
-        </div>
-        <div class="form-group">
-            <label for="password">Password</label>
-            <input type="password" id="password" name="password" placeholder="Enter your password" required>
-        </div>
-        
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; font-size: 0.9rem;">
-            <a href="{% url 'frgt' %}" style="color: var(--text-secondary); text-decoration: none;">Forgot Password?</a>
-            <a href="{% url 'userregistration' %}" style="color: var(--accent-indigo); text-decoration: none; font-weight: 600;">Create Account</a>
-        </div>
+        <form action="{% url 'userloginaction' %}" method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="mail">Email Address</label>
+                <input type="email" id="mail" name="mail" placeholder="e.g. user@domain.com" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Enter password" required>
+            </div>
+            
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.8rem; font-size: 0.85rem;">
+                <a href="{% url 'frgt' %}" style="color: var(--text-secondary); text-decoration: none; transition: var(--transition-premium);" onmouseover="this.style.color='#ffffff'" onmouseout="this.style.color='var(--text-secondary)'">Forgot Password?</a>
+                <a href="{% url 'userregistration' %}" style="color: var(--accent-emerald); text-decoration: none; font-weight: 600;">Create Account</a>
+            </div>
 
-        <div style="text-align: center; margin-top: 2rem;">
-            <button type="submit" class="btn-primary-glow" style="width: 100%;">Sign In</button>
-        </div>
-    </form>
+            <div style="display: flex; justify-content: center;">
+                <button type="submit" class="btn-premium" style="width: 100%;">
+                    <span>Sign In</span>
+                    <span class="btn-arrow">&rarr;</span>
+                </button>
+            </div>
+        </form>
+    </div>
 </div>
 {% endblock %}

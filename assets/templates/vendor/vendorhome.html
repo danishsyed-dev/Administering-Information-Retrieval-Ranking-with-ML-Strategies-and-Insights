@@ -1,17 +1,25 @@
 {% extends "base.html" %}
 {% block contents %}
-<div class="hero-section fade-in" style="padding-top: 4rem;">
+<div class="hero-section fade-in">
     <h1>Vendor Control Center</h1>
-    <p>Logged in as: <span class="text-gradient-purple">{{ request.session.vendorid }}</span></p>
+    <p>Logged in as: <span class="text-gradient-purple" style="font-weight: 700; color: #ffffff;">{{ request.session.vendorid }}</span> &middot; <code>{{ request.session.vendor_email }}</code></p>
 </div>
 
-<div class="glass-card fade-in" style="text-align: center;">
-    <h3 style="margin-top: 0; color: #fff;">Document Management</h3>
-    <p style="color: var(--text-secondary); margin-bottom: 2rem;">Upload UTF-8 text files to the ranking engine media directory. The engine maps document frequencies dynamically.</p>
-    
-    <div style="display: flex; gap: 1.5rem; justify-content: center;">
-        <a href="{% url 'fileupload' %}" class="btn-primary-glow">Upload New Document</a>
-        <a href="{% url 'logout' %}" class="btn-secondary-glow">Sign Out</a>
+<div class="outer-bezel fade-in" style="margin-top: 3rem;">
+    <div class="inner-core" style="text-align: center;">
+        <h3 style="margin-top: 0; color: #ffffff; font-size: 1.5rem; margin-bottom: 1rem;">Document Indexing Management</h3>
+        <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6; margin-bottom: 2.5rem;">Upload raw text documents containing English sentences to the search index directory. Preprocessing runs calculations dynamically.</p>
+        
+        <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+            <a href="{% url 'fileupload' %}" class="btn-premium">
+                <span>Upload New Text Document</span>
+                <span class="btn-arrow">&rarr;</span>
+            </a>
+            <a href="{% url 'logout' %}" class="btn-premium btn-premium-sec">
+                <span>Sign Out</span>
+                <span class="btn-arrow">&rarr;</span>
+            </a>
+        </div>
     </div>
 </div>
 {% endblock %}

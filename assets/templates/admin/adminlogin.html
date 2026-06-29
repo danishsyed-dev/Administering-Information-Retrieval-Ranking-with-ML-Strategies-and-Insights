@@ -1,22 +1,27 @@
 {% extends "base.html" %}
 {% block contents %}
-<div class="glass-card fade-in" style="margin-top: 4rem;">
-    <h2 class="text-gradient-purple" style="text-align: center; margin-top: 0; font-size: 2rem;">Admin Portal</h2>
-    <p style="text-align: center; color: var(--text-secondary); margin-bottom: 2rem;">Log in using your system administrator credentials.</p>
-    
-    <form action="{% url 'adminloginaction' %}" method="post">
-        {% csrf_token %}
-        <div class="form-group">
-            <label for="username">Username</label>
-            <input type="text" id="username" name="username" placeholder="Enter admin username" required>
-        </div>
-        <div class="form-group">
-            <label for="password">Password</label>
-            <input type="password" id="password" name="password" placeholder="Enter admin password" required>
-        </div>
-        <div style="text-align: center; margin-top: 2rem;">
-            <button type="submit" class="btn-primary-glow" style="width: 100%;">Sign In</button>
-        </div>
-    </form>
+<div class="outer-bezel fade-in" style="margin-top: 4rem;">
+    <div class="inner-core">
+        <h2 style="margin-top: 0; font-size: 1.8rem; text-align: center;">Administrator Portal</h2>
+        <p style="color: var(--text-secondary); text-align: center; font-size: 0.9rem; margin-bottom: 2rem; line-height: 1.5;">Log in using your system administrator credentials to activate accounts or run audits.</p>
+        
+        <form action="{% url 'adminloginaction' %}" method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" placeholder="Enter admin username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Enter admin password" required>
+            </div>
+            <div style="margin-top: 2.5rem; display: flex; justify-content: center;">
+                <button type="submit" class="btn-premium" style="width: 100%;">
+                    <span>Sign In Console</span>
+                    <span class="btn-arrow">&rarr;</span>
+                </button>
+            </div>
+        </form>
+    </div>
 </div>
 {% endblock %}

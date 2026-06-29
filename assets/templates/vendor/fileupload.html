@@ -1,32 +1,40 @@
 {% extends "base.html" %}
 {% block contents %}
-<div class="glass-card fade-in" style="margin-top: 4rem;">
-    <h2 class="text-gradient-purple" style="text-align: center; margin-top: 0; font-size: 2rem;">Upload Document</h2>
-    <p style="text-align: center; color: var(--text-secondary); margin-bottom: 2rem;">Select and upload plain text files (UTF-8 encoded) for lexical frequency and LDA parsing.</p>
+<div class="outer-bezel fade-in" style="margin-top: 3rem;">
+    <div class="inner-core">
+        <h2 style="margin-top: 0; font-size: 1.8rem; text-align: center;">Upload Document</h2>
+        <p style="color: var(--text-secondary); text-align: center; font-size: 0.9rem; margin-bottom: 2rem; line-height: 1.5;">Select and upload plain text files (`.txt` extension, UTF-8 encoded) containing English content to the index directory.</p>
 
-    {% if msg %}
-        <div style="background-color: rgba(16, 185, 129, 0.15); border: 1px solid rgba(16, 185, 129, 0.3); color: #34d399; padding: 1rem; border-radius: 12px; margin-bottom: 2rem; text-align: center; font-weight: 600;">
-            {{ msg }}
-        </div>
-    {% endif %}
+        {% if msg %}
+            <div style="background-color: rgba(16, 185, 129, 0.06); border: 1px solid rgba(16, 185, 129, 0.15); color: #34d399; padding: 1.2rem; border-radius: 14px; margin-bottom: 2rem; text-align: center; font-weight: 500; font-size: 0.9rem;">
+                {{ msg }}
+            </div>
+        {% endif %}
 
-    <form action="{% url 'fileupload' %}" method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        
-        <div class="form-group" style="text-align: center;">
-            <div style="border: 2px dashed var(--border-color); border-radius: 16px; padding: 3rem; background-color: rgba(11, 15, 25, 0.4); cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.borderColor='var(--accent-indigo)'" onmouseout="this.style.borderColor='var(--border-color)'">
-                <input type="file" id="file" name="file" accept=".txt" style="display: none;" onchange="document.getElementById('file-info').innerText = 'Selected file: ' + this.files[0].name;" required>
-                <div onclick="document.getElementById('file').click();">
-                    <span style="font-size: 2.5rem; display: block; margin-bottom: 1rem;">📄</span>
-                    <span id="file-info" style="color: var(--text-secondary); font-size: 0.95rem; font-weight: 600;">Click to select a .txt file</span>
+        <form action="{% url 'fileupload' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            
+            <div class="form-group" style="text-align: center;">
+                <div style="border: 1px dashed var(--border-inner); border-radius: 16px; padding: 3rem; background-color: rgba(12, 13, 18, 0.4); cursor: pointer; transition: var(--transition-premium);" onmouseover="this.style.borderColor='var(--accent-emerald)';" onmouseout="this.style.borderColor='var(--border-inner)';">
+                    <input type="file" id="file" name="file" accept=".txt" style="display: none;" onchange="document.getElementById('file-info').innerText = 'Selected: ' + this.files[0].name; document.getElementById('file-info').style.color='#ffffff';" required>
+                    <div onclick="document.getElementById('file').click();">
+                        <span style="font-size: 2rem; display: block; margin-bottom: 1rem; opacity: 0.7;">📄</span>
+                        <span id="file-info" style="color: var(--text-secondary); font-size: 0.9rem; font-weight: 600;">Choose plain text file</span>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div style="display: flex; gap: 1.5rem; justify-content: center; margin-top: 2rem;">
-            <button type="submit" class="btn-primary-glow" style="flex-grow: 1;">Upload</button>
-            <a href="{% url 'vendor1' %}" class="btn-secondary-glow" style="flex-grow: 1;">Back Dashboard</a>
-        </div>
-    </form>
+            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 2.5rem;">
+                <button type="submit" class="btn-premium" style="flex-grow: 1;">
+                    <span>Upload File</span>
+                    <span class="btn-arrow">&rarr;</span>
+                </button>
+                <a href="{% url 'vendor1' %}" class="btn-premium btn-premium-sec" style="flex-grow: 1; justify-content: center;">
+                    <span>Back Dashboard</span>
+                    <span class="btn-arrow">&rarr;</span>
+                </a>
+            </div>
+        </form>
+    </div>
 </div>
 {% endblock %}

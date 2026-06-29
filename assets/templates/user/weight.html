@@ -1,20 +1,28 @@
 {% extends "base.html" %}
 {% block contents %}
-<div class="glass-card fade-in" style="margin-top: 4rem; text-align: center;">
-    <h2 class="text-gradient-purple" style="margin-top: 0; font-size: 2.2rem;">Document Relevance Weight</h2>
-    <p style="color: var(--text-secondary); margin-bottom: 2rem;">The NLP cleaning pipeline and Latent Dirichlet Allocation (LDA) modeling have completed evaluation of the document.</p>
+<div class="outer-bezel fade-in" style="margin-top: 4rem;">
+    <div class="inner-core" style="text-align: center;">
+        <h2 style="margin-top: 0; font-size: 1.8rem;">Document Relevance weight</h2>
+        <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.5; margin-bottom: 2rem;">NLP preprocessing and Latent Dirichlet Allocation (LDA) modeling have evaluated the semantic richness of the text.</p>
 
-    <div class="metric-card" style="max-width: 300px; margin: 0 auto 2.5rem; background: rgba(99, 102, 241, 0.08); border-color: rgba(99, 102, 241, 0.3);">
-        <h3 style="color: var(--text-secondary);">Calculated Weight</h3>
-        <div class="metric-value" style="font-size: 3.5rem; text-shadow: 0 0 20px rgba(6, 182, 212, 0.4);">
-            {{ dict|floatformat:6 }}
+        <div class="metric-item" style="max-width: 280px; margin: 0 auto 2.5rem; text-align: center; background: rgba(255,255,255,0.02);">
+            <h4 style="margin-bottom: 0.5rem; font-size: 0.8rem; text-transform: uppercase;">Relevance Score</h4>
+            <div class="metric-value" style="font-size: 3rem; color: var(--accent-emerald);">
+                {{ dict|floatformat:6 }}
+            </div>
+            <p style="margin: 0.5rem 0 0 0; color: var(--text-secondary); font-size: 0.75rem;">Sum of Topic Probabilities</p>
         </div>
-        <p style="margin: 0; color: var(--text-secondary); font-size: 0.85rem;">Sum of Topic Distributions</p>
-    </div>
 
-    <div style="display: flex; gap: 1.5rem; justify-content: center;">
-        <a href="{% url 'home' %}" class="btn-primary-glow">Search Again</a>
-        <a href="{% url 'logout' %}" class="btn-secondary-glow">Sign Out</a>
+        <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+            <a href="{% url 'home' %}" class="btn-premium">
+                <span>Search Index</span>
+                <span class="btn-arrow">&rarr;</span>
+            </a>
+            <a href="{% url 'logout' %}" class="btn-premium btn-premium-sec">
+                <span>Sign Out</span>
+                <span class="btn-arrow">&rarr;</span>
+            </a>
+        </div>
     </div>
 </div>
 {% endblock %}

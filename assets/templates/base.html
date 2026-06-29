@@ -5,24 +5,22 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Information Retrieval Ranking</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}?v=3">
 </head>
 <body>
 
-    <nav class="gtco-nav" role="navigation">
-        <div class="main-container" style="padding: 0 2rem;">
-            <div class="row">
-                <div id="gtco-logo">
-                    <a href="{% url 'index' %}">IR RANKING PORTAL</a>
-                </div>
-                <div class="menu-1">
-                    <ul>
-                        <li><a href="{% url 'index' %}">Home</a></li>
-                        <li><a href="{% url 'user' %}">User Login</a></li>
-                        <li><a href="{% url 'vendor' %}">Vendor Login</a></li>
-                        <li><a href="{% url 'admin' %}">Admin Login</a></li>
-                    </ul>
-                </div>
+    <nav class="nav-island" role="navigation">
+        <div class="row">
+            <div id="gtco-logo">
+                <a href="{% url 'index' %}">IR Ranking</a>
+            </div>
+            <div class="menu-1">
+                <ul>
+                    <li><a href="{% url 'index' %}">Home</a></li>
+                    <li><a href="{% url 'user' %}">User Portal</a></li>
+                    <li><a href="{% url 'vendor' %}">Vendor Portal</a></li>
+                    <li><a href="{% url 'admin' %}">Admin Console</a></li>
+                </ul>
             </div>
         </div>
     </nav>
@@ -41,10 +39,8 @@
     </div>
 
     <footer class="custom-footer">
-        <div class="main-container" style="padding: 0 2rem;">
-            <p>&copy; 2026 Information Retrieval Ranking with ML. All Rights Reserved.</p>
-            <p>Designed with Glassmorphic Premium UI &middot; Deep Learning Topic Modeling &amp; SVM Evaluation</p>
-        </div>
+        <p>&copy; 2026 Information Retrieval Ranking with ML. All Rights Reserved.</p>
+        <p style="opacity: 0.5; font-size: 0.75rem;">Premium Agency Build &bull; Latent Dirichlet Allocation (LDA) &amp; Linear SVC Audits</p>
     </footer>
 
 </body>

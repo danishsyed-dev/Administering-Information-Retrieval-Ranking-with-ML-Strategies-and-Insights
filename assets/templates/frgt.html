@@ -1,28 +1,33 @@
 {% extends "base.html" %}
 {% block contents %}
-<div class="glass-card fade-in" style="margin-top: 4rem;">
-    <h2 class="text-gradient-purple" style="text-align: center; margin-top: 0; font-size: 2rem;">Reset Password</h2>
-    <p style="text-align: center; color: var(--text-secondary); margin-bottom: 2rem;">Verify your registered email and mobile number to reset your password.</p>
+<div class="outer-bezel fade-in" style="margin-top: 3rem;">
+    <div class="inner-core">
+        <h2 style="margin-top: 0; font-size: 1.8rem; text-align: center;">Reset Account Password</h2>
+        <p style="color: var(--text-secondary); text-align: center; font-size: 0.9rem; margin-bottom: 2rem; line-height: 1.5;">Provide your registered email address and 10-digit mobile number below to initiate password recovery.</p>
 
-    {% if hello %}
-        <div style="background-color: rgba(239, 68, 68, 0.15); border: 1px solid rgba(239, 68, 68, 0.3); color: #f87171; padding: 1rem; border-radius: 12px; margin-bottom: 1.5rem; text-align: center; font-weight: 600;">
-            {{ hello }}
-        </div>
-    {% endif %}
+        {% if hello %}
+            <div style="background-color: rgba(239, 68, 68, 0.06); border: 1px solid rgba(239, 68, 68, 0.15); color: #f87171; padding: 1rem; border-radius: 12px; margin-bottom: 1.5rem; font-size: 0.85rem; font-weight: 500; text-align: center;">
+                {{ hello }}
+            </div>
+        {% endif %}
 
-    <form action="{% url 'frgt' %}" method="post">
-        {% csrf_token %}
-        <div class="form-group">
-            <label for="e1">Email Address</label>
-            <input type="email" id="e1" name="e1" placeholder="Enter your registered email" required>
-        </div>
-        <div class="form-group">
-            <label for="m1">Mobile Number</label>
-            <input type="text" id="m1" name="m1" placeholder="Enter your 10-digit mobile number" required>
-        </div>
-        <div style="text-align: center; margin-top: 2rem;">
-            <button type="submit" class="btn-primary-glow" style="width: 100%;">Verify Account</button>
-        </div>
-    </form>
+        <form action="{% url 'frgt' %}" method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="e1">Email Address</label>
+                <input type="email" id="e1" name="e1" placeholder="e.g. user@domain.com" required>
+            </div>
+            <div class="form-group">
+                <label for="m1">Mobile Number</label>
+                <input type="text" id="m1" name="m1" placeholder="Enter exactly 10 digits" required>
+            </div>
+            <div style="margin-top: 2rem; display: flex; justify-content: center;">
+                <button type="submit" class="btn-premium" style="width: 100%;">
+                    <span>Verify Account</span>
+                    <span class="btn-arrow">&rarr;</span>
+                </button>
+            </div>
+        </form>
+    </div>
 </div>
 {% endblock %}

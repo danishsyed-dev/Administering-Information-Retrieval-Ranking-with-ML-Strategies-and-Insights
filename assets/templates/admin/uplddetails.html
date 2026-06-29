@@ -1,36 +1,38 @@
 {% extends "AdminBase.html" %}
 {% block contents %}
-<div class="glass-card-wide fade-in">
-    <h2 class="text-gradient-purple" style="margin-top: 0; font-size: 2rem;">Uploaded Documents Tracking</h2>
-    <p style="color: var(--text-secondary); margin-bottom: 2rem;">Track metadata and status logs of documents uploaded by file vendors.</p>
+<div class="outer-bezel-wide fade-in">
+    <div class="inner-core">
+        <h2 style="margin-top: 0; font-size: 1.8rem;">Uploaded Documents Tracking</h2>
+        <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 2rem;">Track metadata details and system file paths of files uploaded by document vendors.</p>
 
-    <div style="overflow-x: auto;">
-        <table class="custom-table">
-            <thead>
-                <tr>
-                    <th>File ID</th>
-                    <th>Filename</th>
-                    <th>Relative Filepath</th>
-                    <th>Vendor Name</th>
-                    <th>Upload Date/Time</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for x in object %}
-                <tr>
-                    <td><code>#{{ x.id }}</code></td>
-                    <td style="color: #fff; font-weight: 600;">{{ x.filename }}</td>
-                    <td><code style="color: #06b6d4;">{{ x.filepath }}</code></td>
-                    <td>{{ x.vendorname }}</td>
-                    <td>{{ x.upload_date }}</td>
-                </tr>
-                {% empty %}
-                <tr>
-                    <td colspan="5" style="text-align: center; color: var(--text-secondary); padding: 2rem;">No documents uploaded yet.</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+        <div class="table-wrapper">
+            <table class="custom-table">
+                <thead>
+                    <tr>
+                        <th>File ID</th>
+                        <th>Filename</th>
+                        <th>Relative Filepath</th>
+                        <th>Vendor Name</th>
+                        <th>Upload Date/Time</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for x in object %}
+                    <tr>
+                        <td><code>#{{ x.id }}</code></td>
+                        <td style="color: #ffffff; font-weight: 600;">{{ x.filename }}</td>
+                        <td><code style="color: var(--accent-emerald);">{{ x.filepath }}</code></td>
+                        <td>{{ x.vendorname }}</td>
+                        <td>{{ x.upload_date }}</td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="5" style="text-align: center; color: var(--text-secondary); padding: 3rem;">No documents uploaded to the system index yet.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
 {% endblock %}

@@ -1,19 +1,26 @@
 {% extends "base.html" %}
 {% block contents %}
-<div class="glass-card fade-in" style="margin-top: 4rem;">
-    <h2 class="text-gradient-purple" style="text-align: center; margin-top: 0; font-size: 2rem;">Choose New Password</h2>
-    <p style="text-align: center; color: var(--text-secondary); margin-bottom: 2rem;">Verification successful. Set a new password for account: <code>{{ msg }}</code></p>
+<div class="outer-bezel fade-in" style="margin-top: 4rem;">
+    <div class="inner-core">
+        <h2 style="margin-top: 0; font-size: 1.8rem; text-align: center;">Set New Password</h2>
+        <p style="color: var(--text-secondary); text-align: center; font-size: 0.9rem; margin-bottom: 2rem; line-height: 1.5;">Account verification complete. Choose a new password for: <code>{{ msg }}</code></p>
 
-    <form action="{% url 'nwpwd' %}" method="post">
-        {% csrf_token %}
-        <input type="hidden" name="name1" value="{{ msg }}">
-        <div class="form-group">
-            <label for="p1">New Password</label>
-            <input type="password" id="p1" name="p1" placeholder="Enter new password" required>
-        </div>
-        <div style="text-align: center; margin-top: 2rem;">
-            <button type="submit" class="btn-primary-glow" style="width: 100%;">Update Password</button>
-        </div>
-    </form>
+        <form action="{% url 'nwpwd' %}" method="post">
+            {% csrf_token %}
+            <input type="hidden" name="name1" value="{{ msg }}">
+            
+            <div class="form-group">
+                <label for="p1">New Password</label>
+                <input type="password" id="p1" name="p1" placeholder="Enter new password" required>
+            </div>
+            
+            <div style="margin-top: 2rem; display: flex; justify-content: center;">
+                <button type="submit" class="btn-premium" style="width: 100%;">
+                    <span>Save New Password</span>
+                    <span class="btn-arrow">&rarr;</span>
+                </button>
+            </div>
+        </form>
+    </div>
 </div>
 {% endblock %}

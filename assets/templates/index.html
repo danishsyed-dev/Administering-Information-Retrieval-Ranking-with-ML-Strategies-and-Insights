@@ -1,26 +1,33 @@
 {% extends "base.html" %}
 {% block contents %}
 <div class="hero-section fade-in">
-    <h1>Administering Information Retrieval Ranking</h1>
-    <p>A cutting-edge machine learning search portal combining Natural Language Processing, Latent Dirichlet Allocation (LDA) topic modeling, and Support Vector Machine (SVM) algorithms for optimal document ranking and retrieval.</p>
-    <div style="display: flex; gap: 1.5rem; justify-content: center; margin-top: 2rem;">
-        <a href="{% url 'user' %}" class="btn-primary-glow">End User Portal</a>
-        <a href="{% url 'vendor' %}" class="btn-secondary-glow">Document Vendor Portal</a>
+    <h1>Semantic Search &amp; <span style="background: linear-gradient(135deg, #10b981, #34d399); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Relevance Auditing</span> Portal</h1>
+    <p>A high-performance machine learning suite utilizing Natural Language Processing (NLP), unsupervised topic modeling, and Support Vector Machine classifiers for document ranking diagnostics.</p>
+    <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 2rem;">
+        <a href="{% url 'user' %}" class="btn-premium">
+            <span>User Portal</span>
+            <span class="btn-arrow">&rarr;</span>
+        </a>
+        <a href="{% url 'vendor' %}" class="btn-premium btn-premium-sec">
+            <span>Vendor Portal</span>
+            <span class="btn-arrow">&rarr;</span>
+        </a>
     </div>
 </div>
 
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 3rem;" class="fade-in">
-    <div class="glass-card" style="margin: 0; max-width: 100%;">
-        <h3 class="text-gradient-purple" style="font-size: 1.4rem; margin-top: 0;">Unsupervised LDA Topics</h3>
-        <p style="color: var(--text-secondary); line-height: 1.6;">Extract topic distributions dynamically from documents using Latent Dirichlet Allocation. Numerical weight scores assign search query matches their exact semantic relevance weight.</p>
+<div class="bento-grid fade-in">
+    <div class="outer-bezel" style="margin: 0; max-width: 100%;">
+        <div class="inner-core" style="height: 100%;">
+            <h3 style="margin-top: 0; font-size: 1.3rem;">Topic Modeling Weight</h3>
+            <p style="color: var(--text-secondary); line-height: 1.6; font-size: 0.9rem;">Extract numerical document weight scores from unstructured text by fitting an unsupervised Latent Dirichlet Allocation (LDA) model to token mixtures.</p>
+        </div>
     </div>
-    <div class="glass-card" style="margin: 0; max-width: 100%;">
-        <h3 class="text-gradient-purple" style="font-size: 1.4rem; margin-top: 0;">Support Vector Machine</h3>
-        <p style="color: var(--text-secondary); line-height: 1.6;">Train a linear Support Vector Classifier (SVC) directly on retrieved weight scores to evaluate rank classification accuracy. Features include confusion matrix and classification reports.</p>
-    </div>
-    <div class="glass-card" style="margin: 0; max-width: 100%;">
-        <h3 class="text-gradient-purple" style="font-size: 1.4rem; margin-top: 0;">Multi-Role Administration</h3>
-        <p style="color: var(--text-secondary); line-height: 1.6;">Secure multi-role system access featuring admin approvals, authorization key generations, text file processing, and direct analytical model evaluations.</p>
+    
+    <div class="outer-bezel" style="margin: 0; max-width: 100%;">
+        <div class="inner-core" style="height: 100%;">
+            <h3 style="margin-top: 0; font-size: 1.3rem;">Supervised Audit Classifiers</h3>
+            <p style="color: var(--text-secondary); line-height: 1.6; font-size: 0.9rem;">Train a linear Support Vector Machine (SVM) on calculated database weights to calculate model precision, recall, and classification report accuracy scores.</p>
+        </div>
     </div>
 </div>
 {% endblock %}

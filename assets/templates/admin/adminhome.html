@@ -1,30 +1,61 @@
 {% extends "AdminBase.html" %}
 {% block contents %}
-<div class="hero-section fade-in" style="padding-top: 4rem;">
+<div class="hero-section fade-in">
     <h1>Administrator Panel</h1>
-    <p>Welcome to the Administrative Dashboard. From here you can manage user activations, review vendor statuses, track uploaded documents, and evaluate the SVM machine learning accuracy.</p>
+    <p>Manage user activations, verify document uploading indices, and audit classification accuracy metrics.</p>
 </div>
 
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-top: 2rem;" class="fade-in">
-    <div class="glass-card" style="margin: 0; max-width: 100%; text-align: center;">
-        <h3 style="margin-top: 0; color: #fff;">User Approvals</h3>
-        <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">Review pending user registration logs and activate accounts with secure 8-digit authorization keys.</p>
-        <a href="{% url 'userdetails' %}" class="btn-primary-glow" style="padding: 0.7rem 1.5rem; font-size: 0.9rem;">Manage Users</a>
+<div class="bento-grid fade-in">
+    <div class="outer-bezel" style="margin: 0; max-width: 100%;">
+        <div class="inner-core" style="padding: 2.5rem; display: flex; flex-direction: column; justify-content: space-between; height: 100%; box-sizing: border-box;">
+            <div>
+                <h3 style="margin-top: 0; font-size: 1.3rem;">User Approvals</h3>
+                <p style="color: var(--text-secondary); line-height: 1.6; font-size: 0.85rem; margin-bottom: 1.5rem;">Review pending user registration logs and activate accounts with secure 8-digit authorization keys.</p>
+            </div>
+            <a href="{% url 'userdetails' %}" class="btn-premium" style="align-self: flex-start;">
+                <span>Manage Users</span>
+                <span class="btn-arrow">&rarr;</span>
+            </a>
+        </div>
     </div>
-    <div class="glass-card" style="margin: 0; max-width: 100%; text-align: center;">
-        <h3 style="margin-top: 0; color: #fff;">Vendor Approvals</h3>
-        <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">Manage incoming file vendor applications and activate access privileges.</p>
-        <a href="{% url 'vendordetails' %}" class="btn-secondary-glow" style="padding: 0.7rem 1.5rem; font-size: 0.9rem;">Manage Vendors</a>
+    
+    <div class="outer-bezel" style="margin: 0; max-width: 100%;">
+        <div class="inner-core" style="padding: 2.5rem; display: flex; flex-direction: column; justify-content: space-between; height: 100%; box-sizing: border-box;">
+            <div>
+                <h3 style="margin-top: 0; font-size: 1.3rem;">Vendor Approvals</h3>
+                <p style="color: var(--text-secondary); line-height: 1.6; font-size: 0.85rem; margin-bottom: 1.5rem;">Manage incoming file vendor applications and activate access privileges.</p>
+            </div>
+            <a href="{% url 'vendordetails' %}" class="btn-premium" style="align-self: flex-start;">
+                <span>Manage Vendors</span>
+                <span class="btn-arrow">&rarr;</span>
+            </a>
+        </div>
     </div>
-    <div class="glass-card" style="margin: 0; max-width: 100%; text-align: center;">
-        <h3 style="margin-top: 0; color: #fff;">Document Index</h3>
-        <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">Track file metadata, upload times, and file path mappings for all system documents.</p>
-        <a href="{% url 'filedetails' %}" class="btn-primary-glow" style="padding: 0.7rem 1.5rem; font-size: 0.9rem;">Track Documents</a>
+
+    <div class="outer-bezel" style="margin: 0; max-width: 100%;">
+        <div class="inner-core" style="padding: 2.5rem; display: flex; flex-direction: column; justify-content: space-between; height: 100%; box-sizing: border-box;">
+            <div>
+                <h3 style="margin-top: 0; font-size: 1.3rem;">Document Index</h3>
+                <p style="color: var(--text-secondary); line-height: 1.6; font-size: 0.85rem; margin-bottom: 1.5rem;">Track file metadata, upload times, and relative file path mappings for all system documents.</p>
+            </div>
+            <a href="{% url 'filedetails' %}" class="btn-premium" style="align-self: flex-start;">
+                <span>Track Documents</span>
+                <span class="btn-arrow">&rarr;</span>
+            </a>
+        </div>
     </div>
-    <div class="glass-card" style="margin: 0; max-width: 100%; text-align: center;">
-        <h3 style="margin-top: 0; color: #fff;">SVM Accuracy</h3>
-        <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">Execute SVM linear classification on weights to output confusion matrices and precision metrics.</p>
-        <a href="{% url 'accurancy' %}" class="btn-secondary-glow" style="padding: 0.7rem 1.5rem; font-size: 0.9rem;">Check Accuracy</a>
+
+    <div class="outer-bezel" style="margin: 0; max-width: 100%;">
+        <div class="inner-core" style="padding: 2.5rem; display: flex; flex-direction: column; justify-content: space-between; height: 100%; box-sizing: border-box;">
+            <div>
+                <h3 style="margin-top: 0; font-size: 1.3rem;">SVM Accuracy</h3>
+                <p style="color: var(--text-secondary); line-height: 1.6; font-size: 0.85rem; margin-bottom: 1.5rem;">Execute SVM linear classification on weights to output confusion matrices and precision metrics.</p>
+            </div>
+            <a href="{% url 'accurancy' %}" class="btn-premium" style="align-self: flex-start;">
+                <span>Check Accuracy</span>
+                <span class="btn-arrow">&rarr;</span>
+            </a>
+        </div>
     </div>
 </div>
 {% endblock %}
