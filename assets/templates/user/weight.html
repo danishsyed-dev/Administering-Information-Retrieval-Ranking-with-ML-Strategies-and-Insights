@@ -5,12 +5,33 @@
         <h2 style="margin-top: 0; font-size: 1.8rem;">Document Relevance weight</h2>
         <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.5; margin-bottom: 2rem;">NLP preprocessing and Latent Dirichlet Allocation (LDA) modeling have evaluated the semantic richness of the text.</p>
 
-        <div class="metric-item" style="max-width: 280px; margin: 0 auto 2.5rem; text-align: center; background: rgba(255,255,255,0.02);">
-            <h4 style="margin-bottom: 0.5rem; font-size: 0.8rem; text-transform: uppercase;">Relevance Score</h4>
-            <div class="metric-value" style="font-size: 3rem; color: var(--accent-emerald);">
-                {{ dict|floatformat:6 }}
+        <div class="metric-container" style="justify-content: center; margin-bottom: 2rem;">
+            <div class="metric-item" style="max-width: 240px; text-align: center; background: rgba(255,255,255,0.02); margin: 0;">
+                <h4 style="margin-bottom: 0.5rem; font-size: 0.8rem; text-transform: uppercase;">Relevance Score</h4>
+                <div class="metric-value" style="font-size: 2.2rem; color: var(--accent-emerald);">
+                    {{ dict|floatformat:6 }}
+                </div>
+                <p style="margin: 0.5rem 0 0 0; color: var(--text-secondary); font-size: 0.7rem;">Topic Probabilities Sum</p>
             </div>
-            <p style="margin: 0.5rem 0 0 0; color: var(--text-secondary); font-size: 0.75rem;">Sum of Topic Probabilities</p>
+            <div class="metric-item" style="max-width: 240px; text-align: center; background: rgba(255,255,255,0.02); margin: 0;">
+                <h4 style="margin-bottom: 0.5rem; font-size: 0.8rem; text-transform: uppercase;">Model Coherence</h4>
+                <div class="metric-value" style="font-size: 2.2rem; color: #60a5fa;">
+                    {{ coherence|floatformat:4 }}
+                </div>
+                <p style="margin: 0.5rem 0 0 0; color: var(--text-secondary); font-size: 0.7rem;">C_v Semantic Coherence</p>
+            </div>
+        </div>
+
+        <div style="text-align: left; margin: 2rem 0 2.5rem 0; padding: 1.5rem; background: rgba(255,255,255,0.01); border: 1px solid var(--border-inner); border-radius: 16px;">
+            <h4 style="margin-top: 0; color: #ffffff; font-size: 1rem; border-bottom: 1px solid var(--border-inner); padding-bottom: 0.8rem; margin-bottom: 1rem; font-weight: 700;">LDA Topic Key Contributors</h4>
+            <div style="display: flex; flex-direction: column; gap: 0.8rem; font-size: 0.85rem;">
+                {% for topic in topics %}
+                    <div>
+                        <strong style="color: var(--accent-emerald);">Topic #{{ topic.id }}:</strong>
+                        <span style="color: var(--text-secondary); font-family: monospace;">{{ topic.words }}</span>
+                    </div>
+                {% endfor %}
+            </div>
         </div>
 
         <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">

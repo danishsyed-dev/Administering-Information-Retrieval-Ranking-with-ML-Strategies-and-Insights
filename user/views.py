@@ -148,6 +148,28 @@ def weight(request):
         ldamodel.get_topics()
         ldamodel.print_topics()
 
+        # Compute Topic Coherence (c_v)
+        coherence_score = 0.0
+        try:
+            from gensim.models import CoherenceModel
+            coherence_model = CoherenceModel(model=ldamodel, texts=processed_articles, dictionary=dictionary, coherence='c_v')
+            coherence_score = coherence_model.get_coherence()
+        except Exception as ce:
+            print("Coherence calculation exception:", str(ce))
+
+        # Extract top keywords
+        topics_data = []
+        try:
+            show_topics = ldamodel.show_topics(num_topics=-1, num_words=10, formatted=False)
+            for topic_id, words in show_topics:
+                word_list = [f"{word} ({prob:.3f})" for word, prob in words]
+                topics_data.append({
+                    "id": topic_id + 1,
+                    "words": ", ".join(word_list[:5])
+                })
+        except Exception as te:
+            print("Topics extraction exception:", str(te))
+
         print("hello im final data")
         doc_topics = list(ldamodel.get_document_topics(corpus))
         a1 = []
@@ -164,7 +186,11 @@ def weight(request):
         # Save calculated weight to wgt database table so that admin can train SVM on it
         WeightModel.objects.create(weight=s)
         
-        return render(request, "user/weight.html", {"dict": s})
+        return render(request, "user/weight.html", {
+            "dict": s,
+            "coherence": coherence_score,
+            "topics": topics_data
+        })
 
 def frgt(request):
     if request.method == 'POST':

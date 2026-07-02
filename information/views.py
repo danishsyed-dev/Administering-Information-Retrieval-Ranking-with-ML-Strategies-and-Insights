@@ -9,6 +9,7 @@ from django.http import HttpResponse
 from user.models import registrationmodel, WeightModel
 from vendor.models import vendorregistrationmodel, uploadmodel
 import random
+import numpy as np
 
 def index(request):
     return render(request, "index.html")
@@ -92,8 +93,6 @@ def accurancy(request):
     # Train / test split (20% test size)
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.20, random_state=42)
     
-    svclassifier = SVC(kernel='linear')
-    
     # SVC expects target to be 1D array. We convert to integer labels or keep float categories
     # Since y contains calculated weights, to perform classification, we can convert weights into class labels (e.g. high/low relevance)
     # Let's map target floats to 0 (low weight) and 1 (high weight) using median weight as threshold to ensure real class separation!
@@ -101,11 +100,29 @@ def accurancy(request):
     y_train_class = (y_train[0] >= median_val).astype(int)
     y_test_class = (y_test[0] >= median_val).astype(int)
     
-    svclassifier.fit(X_train, y_train_class)
+    unique_classes = len(np.unique(y_train_class))
+    best_params = {"C": 1.0, "kernel": "linear"}
+    
+    if unique_classes > 1:
+        try:
+            from sklearn.model_selection import GridSearchCV
+            param_grid = {'C': [0.1, 1, 10], 'kernel': ['linear', 'rbf']}
+            grid = GridSearchCV(SVC(), param_grid, refit=True, cv=min(3, len(X_train)))
+            grid.fit(X_train, y_train_class)
+            best_params = grid.best_params_
+            svclassifier = grid.best_estimator_
+        except Exception as ge:
+            print("GridSearchCV error:", str(ge))
+            svclassifier = SVC(kernel='linear')
+            svclassifier.fit(X_train, y_train_class)
+    else:
+        svclassifier = SVC(kernel='linear')
+        svclassifier.fit(X_train, y_train_class)
+        
     y_pred = svclassifier.predict(X_test)
     
     m = confusion_matrix(y_test_class, y_pred)
-    accurancy_report = classification_report(y_test_class, y_pred)
+    accurancy_report = classification_report(y_test_class, y_pred, zero_division=0)
     
     print(m)
     print(accurancy_report)
@@ -119,6 +136,8 @@ def accurancy(request):
     dict_data = {
         "m": m,
         "accurancy": accurancy_report,
+        "best_c": best_params.get("C"),
+        "best_kernel": best_params.get("kernel"),
         'len0': x[0],
         'len1': x[1],
         'len2': x[2],
