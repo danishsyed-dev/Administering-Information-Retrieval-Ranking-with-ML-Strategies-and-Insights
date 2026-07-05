@@ -1,5 +1,61 @@
 {% extends "base.html" %}
 {% block contents %}
+<style>
+/* Phone Input with Country Code Selector */
+.phone-input-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.phone-select-wrapper {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 1.8rem;
+    display: flex;
+    align-items: center;
+    border-right: 1px solid rgba(255, 255, 255, 0.15) !important;
+    padding-right: 10px;
+    z-index: 5;
+}
+
+.phone-select-wrapper select {
+    background: transparent !important;
+    border: none !important;
+    padding: 0 16px 0 4px !important; /* Extra padding on the right for standard browser arrow */
+    width: auto !important;
+    font-size: 0.95rem !important;
+    color: #ffffff !important;
+    font-weight: 600 !important;
+    cursor: pointer !important;
+    outline: none !important;
+    height: 100% !important;
+    box-shadow: none !important;
+}
+
+.phone-select-wrapper select option {
+    background-color: var(--bg-secondary, #0c0d12);
+    color: var(--text-primary, #f8fafc);
+}
+
+/* Adjust the input to make room for the select dropdown */
+input.phone-input-field {
+    padding-left: 5.8rem !important;
+}
+
+/* Override autofill styles to prevent Chrome from turning background white */
+input.phone-input-field:-webkit-autofill,
+input.phone-input-field:-webkit-autofill:hover, 
+input.phone-input-field:-webkit-autofill:focus, 
+input.phone-input-field:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 1000px var(--bg-primary, #040406) inset !important;
+    -webkit-text-fill-color: var(--text-primary, #ffffff) !important;
+    transition: background-color 5000s ease-in-out 0s;
+}
+</style>
 <div class="outer-bezel fade-in" style="margin-top: 2rem;">
     <div class="inner-core">
         <h2 style="margin-top: 0; font-size: 1.8rem; text-align: center;">User Sign Up</h2>
@@ -31,7 +87,16 @@
 
             <div class="form-group">
                 <label for="mobile">Mobile Number</label>
-                <input type="text" id="mobile" name="mobile" placeholder="Enter exactly 10 digits" required>
+                <div class="phone-input-container">
+                    <div class="phone-select-wrapper">
+                        <select name="country-code" id="country-code">
+                            <option value="IN">IN</option>
+                            <option value="US">US</option>
+                            <option value="AU">AU</option>
+                        </select>
+                    </div>
+                    <input type="text" id="mobile" name="mobile" class="phone-input-field" placeholder="Enter exactly 10 digits" required>
+                </div>
                 {% if form.mobile.errors %}
                     <span style="color: #f87171; font-size: 0.8rem; display: block; margin-top: 0.4rem;">{{ form.mobile.errors.as_text }}</span>
                 {% endif %}
