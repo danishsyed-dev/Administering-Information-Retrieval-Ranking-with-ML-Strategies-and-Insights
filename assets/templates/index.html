@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 {% block contents %}
-<div class="hero-section fade-in">
-    <h1>Semantic Search &amp; <span style="background: linear-gradient(135deg, #10b981, #34d399); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent;">Relevance Auditing</span> Portal</h1>
-    <p>A high-performance machine learning suite utilizing Natural Language Processing (NLP), unsupervised topic modeling, and Support Vector Machine classifiers for document ranking diagnostics.</p>
-    <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 2rem;">
+<div class="hero-section fade-in" style="margin-bottom: 5rem;">
+    <h1 style="max-width: 900px;">Semantic Search &amp; <span style="background: linear-gradient(135deg, #10b981, #34d399); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent;">Relevance Auditing</span> Portal</h1>
+    <p style="margin-top: 1.2rem; max-width: 650px;">A high-performance machine learning suite utilizing Natural Language Processing (NLP), unsupervised topic modeling, and Support Vector Machine classifiers for document ranking diagnostics.</p>
+    <div style="display: flex; gap: 1.2rem; flex-wrap: wrap; margin-top: 2.5rem;">
         <a href="{% url 'user' %}" class="btn-premium">
             <span>User Portal</span>
             <span class="btn-arrow">&rarr;</span>
@@ -15,18 +15,28 @@
     </div>
 </div>
 
-<div class="bento-grid fade-in">
-    <div class="outer-bezel" style="margin: 0; max-width: 100%;">
-        <div class="inner-core" style="height: 100%;">
-            <h3 style="margin-top: 0; font-size: 1.3rem;">Topic Modeling Weight</h3>
-            <p style="color: var(--text-secondary); line-height: 1.6; font-size: 0.9rem;">Extract numerical document weight scores from unstructured text by fitting an unsupervised Latent Dirichlet Allocation (LDA) model to token mixtures.</p>
+<div class="bento-grid fade-in" style="grid-template-columns: repeat(12, 1fr); gap: 2.5rem; align-items: stretch;">
+    <div class="outer-bezel" style="margin: 0; grid-column: span 7; max-width: none;">
+        <div class="inner-core" style="height: 100%; display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+                <h3 style="margin-top: 0; font-size: 1.5rem; margin-bottom: 1rem;">Topic Modeling Weight</h3>
+                <p style="color: var(--text-secondary); line-height: 1.7; font-size: 0.95rem; margin: 0;">Extract numerical document weight scores from unstructured text by fitting an unsupervised Latent Dirichlet Allocation (LDA) model to token mixtures.</p>
+            </div>
+            <div style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border-inner);">
+                <span style="font-size: 0.75rem; text-transform: uppercase; font-weight: 600; color: var(--accent-emerald); letter-spacing: 0.05em;">Unsupervised Learning</span>
+            </div>
         </div>
     </div>
     
-    <div class="outer-bezel" style="margin: 0; max-width: 100%;">
-        <div class="inner-core" style="height: 100%;">
-            <h3 style="margin-top: 0; font-size: 1.3rem;">Supervised Audit Classifiers</h3>
-            <p style="color: var(--text-secondary); line-height: 1.6; font-size: 0.9rem;">Train a linear Support Vector Machine (SVM) on calculated database weights to calculate model precision, recall, and classification report accuracy scores.</p>
+    <div class="outer-bezel" style="margin: 0; grid-column: span 5; max-width: none;">
+        <div class="inner-core" style="height: 100%; display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+                <h3 style="margin-top: 0; font-size: 1.5rem; margin-bottom: 1rem;">Supervised Audit Classifiers</h3>
+                <p style="color: var(--text-secondary); line-height: 1.7; font-size: 0.95rem; margin: 0;">Train a linear Support Vector Machine (SVM) on calculated database weights to calculate model precision, recall, and classification report accuracy scores.</p>
+            </div>
+            <div style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border-inner);">
+                <span style="font-size: 0.75rem; text-transform: uppercase; font-weight: 600; color: var(--accent-emerald); letter-spacing: 0.05em;">Supervised Learning</span>
+            </div>
         </div>
     </div>
 </div>
