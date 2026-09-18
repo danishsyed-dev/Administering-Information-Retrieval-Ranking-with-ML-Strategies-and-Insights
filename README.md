@@ -147,12 +147,35 @@ Navigate to **[http://127.0.0.1:8000/](http://127.0.0.1:8000/)** in your browser
 │   ├── urls.py                  # Main router matching path calls to view actions
 │   └── wsgi.py                  # WSGI config
 ├── information/                 # Admin controllers (approvals, accuracy checker)
+│   ├── __init__.py              # Python package marker
+│   └── views.py                 # Admin views and accuracy checks
 ├── user/                        # User registration, forms, and weight logic
+│   ├── __init__.py              # Python package marker
+│   ├── forms.py                 # User registration forms
+│   ├── models.py                # User and weight database models
+│   ├── views.py                 # User registration, login, search, and ranking views
+│   └── migrations/
+│       ├── __init__.py
+│       └── 0001_initial.py
 ├── vendor/                      # Vendor registrations, document uploads, and search queries
+│   ├── __init__.py              # Python package marker
+│   ├── models.py                # Vendor and uploaded-file models
+│   ├── views.py                 # Vendor registration, upload, and search views
+│   └── migrations/
+│       ├── __init__.py
+│       └── 0001_initial.py
 ├── assets/
-│   ├── templates/               # Glassmorphic HTML pages (Base, AdminBase, logins, weights)
-│   └── static/                  # Static styles (custom style.css)
-├── media/                       # Uploaded text document destination directory
+│   ├── templates/               # HTML templates for admin, user, and vendor workflows
+│   │   ├── AdminBase.html
+│   │   ├── base.html
+│   │   ├── admin/
+│   │   ├── user/
+│   │   └── vendor/
+│   └── static/
+│       └── css/style.css        # Application stylesheet
+├── media/
+│   └── files/pdfs/               # Uploaded text document destination directory
+├── db.sqlite3                    # Local SQLite database
 ├── manage.py                    # Django command-line utility
 └── README.md                    # Repository documentation
 ```
